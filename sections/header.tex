@@ -1,6 +1,6 @@
 %Angaben zum Dokument
-\newcommand*\myauthor{KKK K\"oppel, K\"oppel und Konsortium}
-\newcommand*\mytitle{Volkswirtschaftslehre}
+\title{VWL Zusammenfassung}
+\newcommand*\modurl{https://github.com/HSR-Stud/VWL/}
 \newcommand*\mydate{\today}
 
 \newcommand{\ho}[1]{$_{{\mbox{\small{#1}}}}$}
@@ -42,22 +42,30 @@
 \usepackage[scaled]{helvet}
 \renewcommand*\familydefault{\sfdefault}
 
+%Autoren aus CONTRIBUTORS.txt laden
+\input{texutils/authorsfromfile.tex}
+\authorsfromfile{CONTRIBUTORS.txt}{\url{\modurl}}
+
+% Capture title and author
+\makeatletter
+\let\Title\@title
+\let\Author\@author
+\normalfont\sbox0{\normalfont\Title\qquad\qquad\Author}
+\ifdim\wd0>\textwidth\def\Author{\modurl}\fi
+\makeatother
+
 %Seitenaufbau
 \pagestyle{fancy} %eigener Seitenstil
-%\fancyhf{}
 
 %Linker Header
-\lhead{\mytitle}
-
-
+\lhead{\Title}
 %Rechter Header
-\rhead{\leftmark}
+\rhead{\Author}
 %Linker Footer
-\lfoot{\myauthor}
+\lfoot{\modurl}
 %Center Footer
 \cfoot{\thepage}
 %Rechter Footer
 \rfoot{\mydate}
 %Text Linksbuendig, unregelmaessiger rechter Rand
 \raggedright
-
